@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Alquiler de Cabañas</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navClient">
+			<div class="container-fluid">
+				<a class="navbar-brand">Alquiler de cabañas</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+						<a class="nav-link" href="/clientes.html">Listar Clientes</a>
+						<a class="nav-link" onclick="createClient()">Registrar Cliente</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<section class="banner_main" id="dataClients">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="well well-sm">
+							<div class="table" id="table">
+								"<table class="table table-hover table-dark">
+									<thead>
+										<tr>
+											<th scope="col-md-2">#</th>
+											<th scope="col">Nombre</th>
+											<th scope="col">Email</th>
+											<th scope="col">Edad</th>
+											<th scope="col">Acciones</th>
+										</tr>
+									</thead>
+									<tbody id="tableClients">
+
+									</tbody>
+								</table>
+							</div>
+							<nav aria-label="Page navigation example" >
+								<ul class="pagination justify-content-center">
+									<li class="page-item disabled">
+										<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+									</li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item"><a class="page-link" href="#">2</a></li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item">
+										<a class="page-link" href="#">Next</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="banner_main" id="registerClient">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="well well-sm">
+							<form class="form-register">
+								<fieldset>
+									<legend class="text-center header">Registrar Cliente</legend>
+									<div class="form-group">
+										<div class="col-md-4">
+											<label for="" class="form-label">Nombre</label>
+											<input id="name" name="name" type="text" placeholder="Nombre Compleo" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-4">
+											<label for="" class="form-label">Email</label>
+											<input id="email" name="email" type="text" placeholder="Email" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-4">
+											<label for="" class="form-label">Edad</label>
+											<input id="age" name="age" type="text" placeholder="Edad" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-4 text-center">
+											<br>
+											<button id="clientSave" class="btn btn-primary btn-lg" onclick="saveClient()">Guardar</button>
+											<button id="cancelClient" class="btn btn-secondary btn-lg" onclick="initClient()" >Cancelar</button>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="banner_main" id="editedClient">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="well well-sm">
+							<form class="form-register">
+								<fieldset>
+									<legend class="text-center header">Editar Cliente</legend>
+									<div class="form-group">
+										<div class="col-md-4">
+											<label for="" class="form-label">Id</label>
+											<input id="idEditClient" name="ideditClient" type="text" placeholder="id" class="form-control" disabled>
+										</div>
+										<div class="col-md-4">
+											<label for="" class="form-label">Nombre</label>
+											<input id="nameEdit" name="namedit" type="text" placeholder="Nombre Completo" class="form-control">
+										</div>
+										<div class="col-md-4">
+											<label for="" class="form-label">Email</label>
+											<input id="emailEdit" name="emaildit" type="text" placeholder="Email" class="form-control">
+										</div>
+										<div class="col-md-4">
+											<label for="" class="form-label">Edad</label>
+											<input id="ageEdit" name="agedit" type="text" placeholder="Edad" class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-4 text-center">
+											<br>
+											<button id="saveClientEdit" class="btn btn-primary btn-lg" onclick="saveEditClient()">Editar</button>
+											<button id="cancelClient" class="btn btn-secondary btn-lg" onclick="initClient()" >Cancelar</button>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="banner_main" id="deletedClient">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="well well-sm">
+							<form class="form-register">
+								<fieldset>
+									<legend class="text-center header">¿Seguro que desea eliminar el cliente?</legend>
+									<div class="form-group">
+										<div class="col-md-4">
+											<label for="" class="form-label">Id</label>
+											<input id="idDeleteClient" name="iddeleteClient" type="text" placeholder="id" class="form-control" disabled>
+										</div>
+										<div class="col-md-4">
+											<label for="" class="form-label">Nombre</label>
+											<input id="nameDelete" name="namedelete" type="text" placeholder="Nombre Completo" class="form-control" readonly>
+										</div>
+										<div class="col-md-4">
+											<label for="" class="form-label">Email</label>
+											<input id="emailDelete" name="emaildelete" type="text" placeholder="Email" class="form-control" readonly>
+										</div>
+										<div class="col-md-4">
+											<label for="" class="form-label">Edad</label>
+											<input id="ageDelete" name="agedelete" type="text" placeholder="Edad" class="form-control" readonly>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-4 text-center">
+											<br>
+											<button id="saveClientDelete" class="btn btn-primary btn-lg" onclick="saveDeleteClient()">Eliminar</button>
+											<button id="cancelClient" class="btn btn-secondary btn-lg" onclick="initClient()" >Cancelar</button>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer id="footClient">
+			<div class="copyright">
+				<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p>© 2022 All Rights Reserved. Design by<a href=""> Cristian Holguín</a></p>
+					</div>
+				</div>
+				</div>
+			</div>
+		</footer>
+		<script src="js/clientes.js"></script>
+	</body>
+</html>
