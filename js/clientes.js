@@ -167,7 +167,7 @@ function deleteClientById(id) {
             document.getElementById("ageDelete").innerHTML = response.items[0].age
             document.getElementById("idDeleteClient").value = response.items[0].id
             document.getElementById("nameDelete").value = response.items[0].name
-            document.getElementById("emaiDelete").value = response.items[0].email
+            document.getElementById("emailDelete").value = response.items[0].email
             document.getElementById("ageDelete").value = response.items[0].age
 
             navClient.style.display = "block"
